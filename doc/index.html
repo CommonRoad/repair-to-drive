@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="Traffic-Rule-Compliant Trajectory Repair Using Satisfiability Solving and Reachability Analysis">
+  <meta name="keywords" content="Motion and path planning, formal methods in robotics and automation, intelligent transportation systems, trajectory repair">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    Traffic-Rule-Compliant Trajectory Repair Using Satisfiability Solving and Reachability Analysis
+  </title>
+<link rel="apple-touch-icon" sizes="57x57" href="./static/images/favicon.ico" />
+  <meta name="application-name" content="Stanford University" />
+  <meta name="msapplication-TileColor" content="#FFFFFF" />
+  <meta name="msapplication-TileImage" content="//www-media.stanford.edu/assets/favicon/mstile-144x144.png" />
+  <meta name="msapplication-square70x70logo" content="//www-media.stanford.edu/assets/favicon/mstile-70x70.png" />
+  <meta name="msapplication-square150x150logo" content="//www-media.stanford.edu/assets/favicon/mstile-150x150.png" />
+  <meta name="msapplication-square310x310logo" content="//www-media.stanford.edu/assets/favicon/mstile-310x310.png" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QZ38WT2YPD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-QZ38WT2YPD');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://kit.fontawesome.com/19914a84eb.js" crossorigin="anonymous"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<section class="hero is-link is-fullheight video" style="overflow: hidden; position:relative;">
+  <div class="hero-video" style="height: 100%; width: 177.77777778vh; min-width: 100%;min-height: 56.25vw;">
+    <video playsinline autoplay muted loop>
+      <source src=" ./static/videos/teaser-small.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-video is-hidden-tablet is-inline-block-mobile"
+    style="height: 154.28571428vw; width: 100%; min-width:64.81481481vh;min-height:100%;">
+    <video playsinline autoplay muted loop>
+      <source src=" ./static/videos/teaser-mobile-small.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="overlay"></div>
+  <!-- Hero head: will stick at the top -->
+  <div class="hero-head is-hidden-mobile">
+    <header class="navbar">
+      <div class="container is-size-5">
+        <div class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item pl-4 pr-4" href="./static/repair.pdf">
+              <span class="icon" style="margin-right:5px;">
+                <img src="./static/images/pdf.svg" alt="PDF" />
+              </span>
+              <span>Paper</span>
+            </a>
+            <a class="navbar-item  pl-4 pr-4" href="https://yuanfei-lin.github.io/">
+              <span class="icon" style="margin-right:5px;">
+                <img src="./static/images/arxiv.svg" alt="ArXiv" />
+              </span>
+              <span>arXiv</span> </a>
+            <a href="https://yuanfei-lin.github.io/" class="navbar-item  pl-4 pr-4">
+              <span class="icon" style="margin-right:5px;">
+                <img src="./static/images/youtube.svg" alt="Youtube" />
+              </span>
+              <span>Video</span> </a>
+            <span class="navbar-item  pl-4 pr-4">
+              <a href="https://github.com/CommonRoad" class="button is-inverted is-large">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>Code (coming soon)</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <!-- Hero content: will be in the middle -->
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title is-1 publication-title is-size-1-mobile" style="font-size: 10rem;">
+        Repair To Drive
+      </h1>
+      <h1 class="subtitle is-1 publication-title is-size-4-mobile" style="font-size: 3.5rem;">
+        Traffic-Rule-Compliant Trajectory Repair<br class="is-hidden-mobile">  Using Satisfiability Solving and Reachability Analysis 
+      </h1>
+      <h1 class="is-2 is-italic is-size-4-mobile" style="font-size: 2rem; opacity: 80%;">
+        Yuanfei Lin, Zekun Xing, Xuyuan Han, Matthias Althoff
+      </h1>
+      <h1 class="is-2 is-italic is-size-4-mobile" style="font-size: 1.5rem; opacity: 80%;">
+        Technical University of Munich
+      </h1>
+      <h1 class="is-2 is-italic is-size-4-mobile" style="font-size: 1.5rem; opacity: 80%;">
+        In Submission 2024
+      </h1>
+      <div class="column has-text-centered is-hidden-tablet">
+        <div class="publication-links">
+          <!-- PDF Link. -->
+          <span class="link-block">
+            <a href="./static/umi-on-legs.pdf" class="external-link button is-normal is-rounded is-dark">
+              <span class="icon">
+                <img src="./static/images/pdf.svg" alt="PDF" />
+              </span>
+              <span>Paper</span>
+            </a>
+          </span>
+          <span class="link-block">
+            <a href="https://arxiv.org/abs/2407.10353" class="external-link button is-normal is-rounded is-dark">
+              <span class="icon">
+                <img src="./static/images/arxiv.svg" alt="ArXiv" />
+              </span>
+              <span>arXiv</span>
+            </a>
+          </span>
+          <!-- Video Link. -->
+          <span class="link-block">
+            <a href="https://youtu.be/4Bp0q3xHTxE" class="external-link button is-normal is-rounded is-dark">
+              <span class="icon">
+                <img src="./static/images/youtube.svg" alt="Youtube" />
+              </span>
+              <span>Video</span>
+            </a>
+          </span>
+          <!-- Code Link. -->
+          <span class="link-block">
+            <a href="https://github.com/real-stanford/umi-on-legs"
+              class="external-link button is-normal is-rounded is-dark">
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
+              <span>Code</span>
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Hero footer: will stick at the bottom -->
+  <div class="hero-foot is-hidden-mobile">
+    <nav class="tabs is-boxed is-fullwidth is-size-5">
+      <ul>
+        <li><a href="#abstract">Paper Abstract</a></li>
+        <li><a href="#dataset">Dataset Evaluation</a></li>
+        <li><a href="#carla">CARLA Simulation</a></li>
+        <li><a href="#real">Real-World Experiments</a></li>
+        <li><a href="#cite">Cite</a></li>
+      </ul>
+    </nav>
+  </div>
+</section>
+
+
+
+
+<section class="section is-medium" id="abstract">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths has-text-justified is-hidden-mobile">
+        <h2 class="subtitle ">
+          Traffic rule compliance for automated vehicles is challenging, as numerous rules need to be considered simultaneously. If a planned trajectory violates traffic rules, it is common to replan a new trajectory from scratch. We instead propose a trajectory repair technique to save computation time. By coupling satisfiability modulo theories with set-based reachability analysis, we determine if and in what manner the initial trajectory can be repaired. Experiments in high-fidelity simulators and in the real world demonstrate the benefits of our proposed approach in various scenarios. Even in complex environments with intricate rules, we efficiently and reliably repair rule-violating trajectories, enabling automated vehicles to swiftly resume legally safe operation in real-time. 
+        </h2>
+        
+      </div>
+
+      <div class="column is-four-fifths is-hidden-tablet has-text-justified-mobile">
+        <p>
+                    Traffic rule compliance for automated vehicles is challenging, as numerous rules need to be considered simultaneously. If a planned trajectory violates traffic rules, it is common to replan a new trajectory from scratch. We instead propose a trajectory repair technique to save computation time. By coupling satisfiability modulo theories with set-based reachability analysis, we determine if and in what manner the initial trajectory can be repaired. Experiments in high-fidelity simulators and in the real world demonstrate the benefits of our proposed approach in various scenarios. Even in complex environments with intricate rules, we efficiently and reliably repair rule-violating trajectories, enabling automated vehicles to swiftly resume legally safe operation in real-time. 
+        </p>
+      </div>
+
+
+    </div>
+  </div>
+      <br>    <br>
+    <div class="container is-max-desktop">
+    <h2 class="title is-1 has-text-centered is-size-4-mobile"></h2>
+    <iframe width="100%" style="aspect-ratio: 16 / 9;" src="
+      https://www.youtube.com/embed/rOJsEGE4I3c?si=EnZ4HRSxsrTv6fFb" title="Trajectory Repair"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+</section>
+
+
+<section class="section" id="dataset">
+  <div class="container is-max-desktop">
+    <h2 class="title is-1 has-text-centered is-size-4-mobile">Dataset Evaluation</h2>
+
+	<div class="content has-text-justified">
+
+
+      <h3 class="subtitle is-3 has-text-weight-semibold">Violations of Safe Distance Rule & Speed Limit Rule</h3>
+      <details style="margin-top: 10px;">
+        <summary><b><a href="https://levelxdata.com/highd-dataset/">HighD dataset</a> with formalized 
+        <a href="https://ieeexplore.ieee.org/abstract/document/9304549">German interstate traffic rules</a></b></summary>
+        <p><br>
+          <b>Safe Distance Rule:</b> The ego vehicle must maintain a safe distance from vehicles in the same lane, ensuring collision avoidance even in cases of sudden stops by one or more vehicles. <br><br>
+          <b>Speed Limit Rule:</b> The ego vehicle must not exceed:
+          <ol style="margin-left: 20px;">
+            <li>The speed limit of the lanes it drives on.</li>
+            <li>The speed necessary to ensure collision freedom with vehicles outside its field of view.</li>
+            <li>The maximum velocity permitted for its vehicle type.</li>
+            <li>The speed necessary for comfortably adhering to traffic regulations.</li>
+          </ol>
+        </p>
+      </details>
+
+      <ul>
+        <li>
+          <b>Initially-planned trajectory </b>
+          <img src="./static/images/rg13_violated.gif" alt="Violations of Rules GIF" height="100%" style="display: block; margin-top: 10px;">
+        </li>
+        <li>
+          <b>Repaired trajectory</b>
+          <img src="./static/images/rg13_repaired.gif" alt="Repaired Trajectory GIF" height="100%" style="display: block; margin-top: 10px;">
+        </li>
+      </ul>
+
+      <h3 class="subtitle is-3 has-text-weight-semibold">Violations of Stop Line Rule</h3>
+      <details style="margin-top: 10px;">
+        <summary><b><a href="https://levelxdata.com/ind-dataset/"><b><a href="https://levelxdata.com/ind-dataset/">InD dataset</a></b> with formalized 
+    <a href="https://ieeexplore.ieee.org/abstract/document/9827153">German intersection traffic rules</a></summary>
+        <p><br>
+          <b>Stop Line Rule:</b> The ego vehicle has to stop with respect to a stop sign
+(sign 206) before it enters the intersection at least for a
+duration in front of the associated stop line.<br><br>
+        </p>
+      </details>
+
+<table style="width: 100%;">
+  <tr>
+    <td style="vertical-align: top; width: 50%;">
+      <ul>
+        <li>
+          <strong>Initially-planned trajectory</strong><br>
+          <img src="./static/images/rin1_violated.gif" alt="Violations of Rules GIF" style="width: 100%; margin-top: 10px;">
+        </li>
+      </ul>
+    </td>
+    <td style="vertical-align: top; width: 50%;">
+      <ul>
+        <li>
+          <strong>Repaired trajectory</strong><br>
+          <img src="./static/images/rin1_repaired.gif" alt="Repaired Trajectory GIF" style="width: 100%; margin-top: 10px;">
+        </li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+     <h3 class="subtitle is-3 has-text-weight-semibold">Violations of Priority Rule</h3>
+      <details style="margin-top: 10px;">
+        <summary><b><a href="https://levelxdata.com/ind-dataset/"><b><a href="https://levelxdata.com/ind-dataset/">InD dataset</a></b> with formalized 
+    <a href="https://ieeexplore.ieee.org/abstract/document/9827153">German intersection traffic rules</a></summary>
+        <p><br>
+          <b>Priority Rule:</b> The ego vehicle is not allowed to enter an intersection if there is
+another vehicle with the right of way that will be endangered by the
+ego vehicle.<br><br>
+        </p>
+      </details>
+
+<table style="width: 100%;">
+  <tr>
+    <td style="vertical-align: top; width: 50%;">
+      <ul>
+        <li>
+          <strong>Initially-planned trajectory</strong><br>
+          <img src="./static/images/rin4_violated.gif" alt="Violations of Rules GIF" style="width: 100%; margin-top: 10px;">
+        </li>
+      </ul>
+    </td>
+    <td style="vertical-align: top; width: 50%;">
+      <ul>
+        <li>
+          <strong>Repaired trajectory</strong><br>
+          <img src="./static/images/rin4_repaired.gif" alt="Repaired Trajectory GIF" style="width: 100%; margin-top: 10px;">
+        </li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+</div>
+
+</section>
+
+<section class="section is-small" id="carla">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+
+        <h2 class="title is-1 has-text-centered is-size-4-mobile">CARLA Simulation</h2>
+        <div class="content">
+          <p>
+            We use the urban downtown environment with CARLA map ID Town 03 and configure the traffic manager in autopilot mode to simulate realistic urban traffic scenarios.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<video autoplay muted loop playsinline width="100%">
+  <source src="./static/videos/carla_rin1.mp4" type="video/mp4">
+</video>
+<video autoplay muted loop playsinline width="100%">
+  <source src="./static/videos/carla_rin5.mp4" type="video/mp4">
+</video>
+<br><br><br><br><br>
+
+<section class="section is-small has-background-black has-text-light" id="real">
+  <div class="container is-max-desktop">
+
+    <h2 class="title is-1 has-text-white  is-size-4-mobile">Real-World Experiments</h2>
+    <div class="content has-text-justified">
+      <p>
+        We integrate our approach into the EDGAR research vehicle, a Volkswagen T7 Multivan equipped with the necessary sensors and hardware for fully autonomous test runs.
+      </p>
+    </div>
+</section>
+<video autoplay muted loop playsinline width="100%">
+  <source src="./static/videos/autoware.mp4" type="video/mp4">
+</video> <br>
+<video autoplay muted loop playsinline height="100%">
+  <source src="./static/videos/small_real.mp4" type="video/mp4">
+</video>
+<br><br><br><br><br><br>
+
+<section class="section is-small" id="cite">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 is-size-4-mobile">Our Team</h2>
+    <div class="container has-text-centered">
+      <div class="publication-authors is-flex justify-content is-justify-content-space-around is-hidden-mobile">
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image is-128x128">
+            <a href="https://yuanfei-lin.github.io/">
+              <img class="is-rounded
+                      " src="./static/images/yuanfei.png" alt="Yuanfei Lin">
+            </a>
+          </figure>
+          <a href="https://yuanfei-lin.github.io/">Yuanfei Lin</a>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image is-128x128">
+            <a href="https://www.ce.cit.tum.de/en/lsr/team/zekun-xing/">
+              <img class="is-rounded
+                      " src="./static/images/zekun.png" alt="Zekun Xing">
+            </a>
+          </figure>
+          <a href="https://www.ce.cit.tum.de/en/lsr/team/zekun-xing/">Zekun Xing</a>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image is-128x128">
+            <a href="https://www.linkedin.com/in/xuyuan-han/?locale=de_DE/">
+              <img class="is-rounded
+                      " src="./static/images/xuyuan.png" alt="Xuyuan Han">
+            </a>
+          </figure>
+          <a href="https://www.linkedin.com/in/xuyuan-han/?locale=de_DE">Xuyuan Han</a>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image is-128x128">
+            <a href="https://www.ce.cit.tum.de/cps/members/prof-dr-ing-matthias-althoff/">
+              <img class="is-rounded
+                      " src="./static/images/matthias.png" alt="Matthias Althoff">
+            </a>
+          </figure>
+          <a href="https://www.ce.cit.tum.de/cps/members/prof-dr-ing-matthias-althoff/">Matthias Althoff</a>
+        </div>
+        
+      </div>
+
+      <div class="publication-authors">
+        <span class="author-block">Technical University of Munich</span>
+      </div>
+      <div class="is-flex is-flex-direction-row is-flex-wrap-wrap is-justify-content-space-evenly is-hidden-tablet">
+                <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image is-128x128">
+            <a href="https://yuanfei-lin.github.io/">
+              <img class="is-rounded
+                      " src="./static/images/yuanfei.png" alt="Yuanfei Lin">
+            </a>
+          </figure>
+          <a href="https://yuanfei-lin.github.io/">Yuanfei Lin</a>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image is-128x128">
+            <a href="https://www.ce.cit.tum.de/en/lsr/team/zekun-xing/">
+              <img class="is-rounded
+                      " src="./static/images/zekun.png" alt="Zekun Xing">
+            </a>
+          </figure>
+          <a href="https://www.ce.cit.tum.de/en/lsr/team/zekun-xing/">Zekun Xing</a>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image is-128x128">
+            <a href="https://www.linkedin.com/in/xuyuan-han/?locale=de_DE/">
+              <img class="is-rounded
+                      " src="./static/images/xuyuan.png" alt="Xuyuan Han">
+            </a>
+          </figure>
+          <a href="https://www.linkedin.com/in/xuyuan-han/?locale=de_DE">Xuyuan Han</a>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image is-128x128">
+            <a href="https://www.ce.cit.tum.de/cps/members/prof-dr-ing-matthias-althoff/">
+              <img class="is-rounded
+                      " src="./static/images/matthias.png" alt="Matthias Althoff">
+            </a>
+          </figure>
+          <a href="https://www.ce.cit.tum.de/cps/members/prof-dr-ing-matthias-althoff/">Matthias Althoff</a>
+        </div>
+
+
+      <div class="publication-authors">
+        <span class="author-block">Technical University of Munich</span>
+      </div>
+
+
+    </div>
+    <br>
+    <pre class="is-hidden-mobile"><code>coming soon!</code></pre>
+    <p>
+      If you have any questions, please contact <a href="https://yuanfei-lin.github.io/">Yuanfei Lin</a>.
+    </p>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Website template modified from <a href="https://umi-on-legs.github.io/">UMI on Legs</a>, <a href="https://nerfies.github.io/">NeRFies</a>, and <a
+              href="https://www.cs.columbia.edu/~huy/scalingup/">Scaling Up Distilling Down</a>.
+          </p>
+          <p>
+            This website is licensed under a <a rel="license"
+              href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+
+</html>
