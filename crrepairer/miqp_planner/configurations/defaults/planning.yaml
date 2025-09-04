@@ -1,0 +1,8 @@
+dt: 0.1
+step_start: 0
+steps_computation: 30
+
+# this can either be "CART" (Cartesian) or "CVLN" (Curvilinear)
+coordinate_system: "CVLN"
+# this can either be "CENTER" or "REAR"
+reference_point: "REAR"
