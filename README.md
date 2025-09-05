@@ -1,6 +1,7 @@
 # Repair-to-Drive: Traffic-Rule-Compliant Trajectory Repair 
 
-This repository contains the implementation for the TRO paper "Traffic-Rule-Compliant Trajectory Repair via Satisfiability Modulo Theories and Reachability Analysis".<br>
+This repository contains the implementation for the TRO paper "**Traffic-Rule-Compliant Trajectory Repair via Satisfiability Modulo Theories and Reachability Analysis**".<br>
+
 <img src="./docs/static/images/teaser.gif" width=100%>
 
 ## 🚗 About Trajectory Repair
@@ -72,7 +73,7 @@ Finally, install this commonroad-repairer package:
 ```sh
 pip install -e .
 ```
----
+
 ### 🪪 Optimization license
 
 For using the optimization solvers, e.g., Gurobi, it is required to apply for an academic license:
@@ -81,7 +82,7 @@ For using the optimization solvers, e.g., Gurobi, it is required to apply for an
   * `conda install -c gurobi gurobi`
   * `connect to the campus network/use` [eduVPN](https://docs.eduvpn.org/client/linux/installation.html)
   * `grbgetkey xxx` (obtained from the Gurobi website)
----
+
 ## 📂 Folder structure
 
 ```sh
@@ -116,11 +117,10 @@ commonroad-repairer
 > print(matplotlib.get_backend())  # Check the current backend
 > matplotlib.use('TkAgg')          # Set the backend to TkAgg
 > ```
----
+
 ## ▶️ Minimal Example
 
 You can find example scripts in the files named `example_*`.
-
 
 ## 📖 Citation
 
