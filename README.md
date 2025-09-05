@@ -1,17 +1,23 @@
-# Repair-to-Drive: Traffic-Rule-Compliant Trajectory Repair
+# Repair-to-Drive: Traffic-Rule-Compliant Trajectory Repair 
 
-This repository contains the implementation for "Traffic-Rule-Compliant Trajectory Repair via Satisfiability Modulo Theories and Reachability Analysis".
-## About Trajectory repairing
+This repository contains the implementation for the TRO paper "Traffic-Rule-Compliant Trajectory Repair via Satisfiability Modulo Theories and Reachability Analysis".<br>
+<img src="./docs/static/images/teaser.gif" width=100%>
 
-___Inspired by Randall Munroe, I describe my research using the 1,200 most common English words from [www.wordfrequency.info](www.wordfrequency.info)._
+## 🚗 About Trajectory Repair
 
-We want our cars to always plan a safe path. But environments change every time. Thus, the path cannot be used as we want or does not follow traffic rules from time to time. One possible solution is to remain part of the path and plan the rest.
+<sub>_Inspired by Randall Munroe, I describe my research using the 1,200 most common English words from [www.wordfrequency.info](www.wordfrequency.info)._</sub>  
 
-## The required Python dependencies
+We want cars to always plan a safe path. But the world around us changes all the time. So sometimes the planned path cannot be followed safely, or it breaks traffic rules. One possible solution is to **keep the safe part of the path** and **replan the rest**.
 
-The code is written in Python 3.10 and has been tested on Ubuntu 20.04 & 22.04.
+---
+## ⚙️ Requirements
 
-## Installation Guide
+- **Python**: 3.10  
+- **OS**: Ubuntu 20.04 or 22.04 (tested)  
+
+---
+
+## 📦 Installation Guide
 
 We recommend using [Anaconda](https://www.anaconda.com/) to manage your environment so that even if you mess something up, you can always have a safe and clean restart. A guide for managing python environments with Anaconda can be found [here](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html).
 
@@ -40,17 +46,22 @@ You have to manually install the following packages:
 > ```
 ```sh
 # Clone the repository and switch to the desired branch
-git clone <package_url>
+git clone --recurse-submodules <package_url>
 cd <package_folder>
 git checkout <branch_name>
 
 # Install the package in editable mode
 pip install -e .
+
+# get back to the main folder
+cd ..
 ```
 
-Then, install the dependencies with:
+Then, install the dependencies in this repository with:
 
 ```sh
+git clone https://github.com/CommonRoad/repair-to-drive
+cd repair-to-drive
 pip install -r requirements.txt
 ```
 
@@ -61,18 +72,17 @@ Finally, install this commonroad-repairer package:
 ```sh
 pip install -e .
 ```
+---
+### 🪪 Optimization license
 
-### Optimization license
+For using the optimization solvers, e.g., Gurobi, it is required to apply for an academic license:
 
-For using the optimization solvers, e.g., Gurobi, Mosek, it is required to apply for an academic license:
-
-* Mosek: <https://www.mosek.com/products/academic-licenses/>
 * Gurobi: <https://www.gurobi.com/academia/academic-program-and-licenses/>
   * `conda install -c gurobi gurobi`
   * `connect to the campus network/use` [eduVPN](https://docs.eduvpn.org/client/linux/installation.html)
   * `grbgetkey xxx` (obtained from the Gurobi website)
-
-## Folder structure
+---
+## 📂 Folder structure
 
 ```sh
 commonroad-repairer 
@@ -86,7 +96,6 @@ commonroad-repairer
 │     ├─ t_solver                       # Theory solver
 |     ├─ monitor_wrapper                # Wrapper for traffic rule monitor
 │  ├─ utils                             # Utility functions
-
 ├─ scenarios
 ├─ example_*
 ├─ LICENSE.txt                                       
@@ -107,12 +116,13 @@ commonroad-repairer
 > print(matplotlib.get_backend())  # Check the current backend
 > matplotlib.use('TkAgg')          # Set the backend to TkAgg
 > ```
-
-## Minimal Example
+---
+## ▶️ Minimal Example
 
 You can find example scripts in the files named `example_*`.
 
-## Citation
+
+## 📖 Citation
 
 ```text
 @article{ lin2025rule,
