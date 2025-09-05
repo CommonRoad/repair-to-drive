@@ -41,9 +41,9 @@ You have to manually install the following packages:
 * [commonroad-mpr](https://github.com/CommonRoad/commonroad-mpr): branch `feature/repair-all`
 * commonroad-reach-sementic: *coming soon*
 > ⚠️ **Note**  
-> The currently available constraints for repair are **manually defined in the solution space**, not in the reachability analysis. See:  
+> The currently available constraints for repair are **manually defined in the solution space**, not in the reachability analysis. Once the reach-sementic package is open-sourced, we will include this accordingly. See the mode options:  
 > ```python
-> config.repair.constraint_mode = 1
+> config.repair.constraint_mode = 1 # 1: manual, 2: reach
 > ```
 ```sh
 # Clone the repository and switch to the desired branch
