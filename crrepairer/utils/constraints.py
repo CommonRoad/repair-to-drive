@@ -8,7 +8,7 @@ from commonroad.common.util import Interval
 from commonroad_dc import pycrcc
 
 # commonroad-qp-planner
-from commonroad_qp_planner.configuration import (
+from crrepairer.miqp_planner.configuration import (
     PlanningConfigurationVehicle,
     ReferencePoint,
 )

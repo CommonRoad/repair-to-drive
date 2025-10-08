@@ -10,7 +10,7 @@ matplotlib.use('TkAgg')
 import math
 
 # ==============================================================
-# Violated traffic rule: R_IN1 (see):
+# Violated traffic rule: R_IN4 (see):
 # S. Maierhofer, P. Moosbrugger, and M. Althoff, “Formalization of
 # intersection traffic rules in temporal logic,” in Proc. of the
 # IEEE Intell. Vehicles Symp., 2022, pp. 1135–1144.
@@ -18,26 +18,26 @@ import math
 
 if __name__ == "__main__":
     # ========== Scenario and Configuration =========
-    scenario_id = "DEU_AachenBendplatz-1_151520_T-1539"
+    scenario_id = "DEU_AachenBendplatz-1_162280_T-2299"
 
     # Build configuration object
     config = RepairerConfiguration()
     config.general.set_path_scenario(scenario_id)
     config.update()
     config.repair.scenario_type = "intersection"
-    config.repair.rules = ["R_IN1"]
-    config.repair.ego_id = 10108
+    config.repair.intersection_type = "dataset"
+    config.repair.rules = ["R_IN4"]
+    config.repair.ego_id = 10179
+
     config.repair.N_r = 20
 
-    config.update()
-
     config.debug.show_plots = True
+    config.repair.planner = 3
     config.repair.constraint_mode = 2
     config.repair.use_mpr = False
     config.repair.use_mpr_derivative = False
-    config.debug.plot_limits = [37, 54, -30, -12]
+    config.debug.plot_limits = [40, 69, -45, -17]
 
-    # Retrieve the ego vehicle
     ego_initial = retrieve_ego_vehicle(config)
 
     # ========== Traffic Rule Monitor =========

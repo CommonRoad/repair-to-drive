@@ -6,6 +6,8 @@ output/
 evaluation/img
 *.out
 
+*.pyc
+
 ## Python
 # Byte-compiled / optimized / DLL files
 __pycache__/

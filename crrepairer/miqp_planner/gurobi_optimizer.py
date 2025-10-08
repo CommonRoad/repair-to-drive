@@ -51,7 +51,7 @@ class GurobiSolver:
         self.u = u
         self.u_shape = u_shape
         for i in range(self.u_shape[0]):  # for each time step
-            self.u[i] = self.add_var("continuous", "u_long_{}".format(i), u_lb, u_ub)
+            self.u[i] = self.add_var("continuous", "u_long_{}".format(i), -GRB.INFINITY, GRB.INFINITY)
 
     def add_slack_var(
         self, slack: np.ndarray, slack_shape: Tuple, slack_lb: float, slack_ub: float

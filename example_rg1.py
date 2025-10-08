@@ -27,9 +27,9 @@ if __name__ == "__main__":
     config.repair.rules = ["R_G1", "R_G3"]
     config.debug.plot_limits = [-5, 50, -4.5, 3]
     config.debug.show_plots = True
-    config.miqp_planner.slack_long = False
+    config.miqp_planner.slack_long = True
     config.repair.N_r = 21
-    config.repair.constraint_mode = 1
+    config.repair.constraint_mode = 2
     config.repair.use_mpr = False
 
     # Retrieve the ego vehicle
